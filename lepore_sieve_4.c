@@ -57,7 +57,7 @@ int main(){
 
  mpf_set_default_prec(1000);/*set this value*/
 
- mpz_t N,m[interval_size+1],n[interval_size],min_interval,max_interval,zero,uno,due,tre,quattro,cinque,otto,nove,dodici,trentasei,settantadue,centoquarantaquattro,temp1,temp2,temp3,min_m,max_m,i,min_n,max_n,j,p,a,b,resto,mcd,P;
+ mpz_t N,m[interval_size+1],n[interval_size],min_interval,max_interval,zero,uno,due,tre,quattro,cinque,otto,nove,dodici,trentasei,settantadue,centoquarantaquattro,temp1,temp2,temp3,min_m,max_m,i,min_n,max_n,j,p,a,b,resto,mcd,P,t,mod;
 
  mpf_t temp1_f,temp2_f,zero_f,uno_f,tre_f,quattro_f,dodici_f;
    
@@ -95,6 +95,8 @@ int main(){
  mpz_init(resto);
  mpz_init(mcd);
  mpz_init(P);
+ mpz_init_set_str (t, "0", 10);
+ mpz_init(mod);
  
  mpf_init(temp1_f);
  mpf_init(temp2_f);
@@ -180,10 +182,10 @@ int main(){
      mpz_mul(temp2,quattro,j);
      mpz_add(temp1,temp1,temp2);
      mpz_add(p,temp1,cinque);
-
+     mpz_mod(mod,p,dodici);
      if(mpz_cmp(p,min_interval)<0){
        break;
-     }else{
+     }else if(mpz_cmp(mod,cinque)==0){
        //gmp_printf ("\ni=%Zd   j=%Zd\n",i,j);
 
      mpz_sub(temp1,p,min_interval);
@@ -200,6 +202,7 @@ int main(){
      
      }
      mpz_add(j,j,uno);
+     mpz_add(t,t,uno);
    }
   
    mpz_set(j,max_n);
@@ -216,10 +219,10 @@ int main(){
      mpz_mul(temp2,quattro,j);
      mpz_add(temp1,temp1,temp2);
      mpz_add(p,temp1,cinque);
-
+     mpz_mod(mod,p,dodici);
       if(mpz_cmp(p,min_interval)<0){
        break;
-     }else{
+      }else if(mpz_cmp(mod,cinque)==0){
 	//gmp_printf ("\ni=%Zd   j=%Zd\n",i,j);
 
      mpz_sub(temp1,p,min_interval);
@@ -235,6 +238,7 @@ int main(){
       
      }
      mpz_sub(j,j,uno);
+     mpz_add(t,t,uno);
    }
 
    
@@ -267,6 +271,7 @@ int main(){
      mpz_mod(resto,a,b);
      mpz_set(a,b);
      mpz_set(b,resto);
+     mpz_add(t,t,uno);
    }
    mpz_set(mcd,a);
 
@@ -279,10 +284,9 @@ int main(){
    
      } 
 
-
    k++;
  }
- 
+ gmp_printf("\ncicles=%Zd\n",t);
 }
 
 
@@ -297,7 +301,7 @@ int prendi_numero(char in[]){
     FILE *fp;
     int i=0;
 
-    fp = fopen("input.txt", "r");
+    fp = fopen("input3.txt", "r");
     if (fp==NULL){
         printf("\nImpossibile aprire file\n");
         system("PAUSE");
