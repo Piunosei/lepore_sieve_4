@@ -286,7 +286,7 @@ int main(){
 
    k++;
  }
- gmp_printf("\ncicles=%Zd\n",t);
+ gmp_printf("\ncycles=%Zd\n",t);
 }
 
 
@@ -301,7 +301,7 @@ int prendi_numero(char in[]){
     FILE *fp;
     int i=0;
 
-    fp = fopen("input3.txt", "r");
+    fp = fopen("input.txt", "r");
     if (fp==NULL){
         printf("\nImpossibile aprire file\n");
         system("PAUSE");
