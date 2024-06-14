@@ -242,7 +242,7 @@ int main(){
  }
  
  k=0;
- while(k<=interval_size){
+ while(k<=interval_size-1){
  if(occurrences[k]==1){
    mpz_mul(temp1,quattro,m[k]);
    mpz_add(temp1,temp1,uno);
