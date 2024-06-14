@@ -241,7 +241,7 @@ int main(){
      mpz_add(t,t,uno);
    }
 
-   
+   mpz_add(t,t,uno);
    mpz_add(i,i,uno);
  }
  
