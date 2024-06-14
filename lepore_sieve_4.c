@@ -283,7 +283,7 @@ int main(){
    }
    
      } 
-
+mpz_add(t,t,uno);
    k++;
  }
  gmp_printf("\ncycles=%Zd\n",t);
