@@ -57,7 +57,7 @@ int main(){
 
  mpf_set_default_prec(1000);/*set this value*/
 
- mpz_t N,m[interval_size+1],n[interval_size],min_interval,max_interval,zero,uno,due,tre,quattro,cinque,otto,nove,dodici,trentasei,settantadue,centoquarantaquattro,temp1,temp2,temp3,min_m,max_m,i,min_n,max_n,j,p,a,b,resto,mcd,P,t,mod;
+ mpz_t N,m[interval_size+1],n[interval_size],min_interval,max_interval,zero,uno,due,tre,quattro,cinque,otto,nove,dodici,trentasei,settantadue,centoquarantaquattro,temp1,temp2,temp3,min_m,max_m,i,min_n,max_n,j,p,a,b,resto,mcd,P,t,mod,T;
 
  mpf_t temp1_f,temp2_f,zero_f,uno_f,tre_f,quattro_f,dodici_f;
    
@@ -97,7 +97,7 @@ int main(){
  mpz_init(P);
  mpz_init_set_str (t, "0", 10);
  mpz_init(mod);
- 
+ mpz_init_set_str (T, "0", 10);
  mpf_init(temp1_f);
  mpf_init(temp2_f);
  mpf_init_set_str (zero_f, "0.0", 10);
@@ -141,7 +141,7 @@ int main(){
  mpf_div(temp2_f,temp2_f,dodici_f);
  mpz_set_f(min_m,temp2_f);
  
- //gmp_printf ("\nmin_m=%Zd\nmax_m=%Zd\n",min_m,max_m);
+ gmp_printf ("\nmin_m=%Zd\nmax_m=%Zd\n",min_m,max_m);
  mpz_set(i,min_m);
 
 
@@ -186,7 +186,7 @@ int main(){
      if(mpz_cmp(p,min_interval)<0){
        break;
      }else if(mpz_cmp(mod,cinque)==0){
-       //gmp_printf ("\ni=%Zd   j=%Zd\n",i,j);
+       // gmp_printf ("\ni=%Zd   j=%Zd\n",i,j);
 
      mpz_sub(temp1,p,min_interval);
      mpz_div(temp1,temp1,dodici);
@@ -241,7 +241,7 @@ int main(){
      mpz_add(t,t,uno);
    }
 
-   mpz_add(t,t,uno);
+    mpz_add(T,T,uno);
    mpz_add(i,i,uno);
  }
  
@@ -286,7 +286,14 @@ int main(){
 mpz_add(t,t,uno);
    k++;
  }
- gmp_printf("\ncycles=%Zd\n",t);
+ mpz_add(temp1,t,T);
+ gmp_printf("\ncycles of this algorithm=%Zd\n",temp1);
+
+ gmp_printf("\ncycles of the algorithm if written well=%Zd\n",t);
+
+ printf("\nDiscussion [ITA]\nwww.matematicamente.it/forum/viewforum.php?f=26\n");
+ printf("\nDiscussion [ENG]\nhttps://www.mersenneforum.org/showthread.php?t=29807\n");
+ 
 }
 
 
@@ -301,7 +308,7 @@ int prendi_numero(char in[]){
     FILE *fp;
     int i=0;
 
-    fp = fopen("input.txt", "r");
+    fp = fopen("input3.txt", "r");
     if (fp==NULL){
         printf("\nImpossibile aprire file\n");
         system("PAUSE");
