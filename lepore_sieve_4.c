@@ -291,7 +291,7 @@ mpz_add(t,t,uno);
 
  gmp_printf("\ncycles of the algorithm if written well=%Zd\n",t);
 
- printf("\nDiscussion [ITA]\nwww.matematicamente.it/forum/viewforum.php?f=26\n");
+ printf("\nDiscussion [ITA]\nhttps://www.matematicamente.it/forum/viewtopic.php?f=26&t=238421\n");
  printf("\nDiscussion [ENG]\nhttps://www.mersenneforum.org/showthread.php?t=29807\n");
  
 }
@@ -308,7 +308,7 @@ int prendi_numero(char in[]){
     FILE *fp;
     int i=0;
 
-    fp = fopen("input3.txt", "r");
+    fp = fopen("input.txt", "r");
     if (fp==NULL){
         printf("\nImpossibile aprire file\n");
         system("PAUSE");
