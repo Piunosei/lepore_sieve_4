@@ -47,7 +47,7 @@ see https://www.gnu.org/licenses/.  */
 #include <stdio.h>
 #include <gmp.h>
 
-#define interval_size 100
+#define interval_size 1000
 
 
 int prendi_numero(char in[]);
@@ -57,7 +57,7 @@ int main(){
 
  mpf_set_default_prec(1000);/*set this value*/
 
- mpz_t N,m[interval_size+1],n[interval_size],min_interval,max_interval,zero,uno,due,tre,quattro,cinque,otto,nove,dodici,trentasei,settantadue,centoquarantaquattro,temp1,temp2,temp3,min_m,max_m,i,min_n,max_n,j,p,a,b,resto,mcd,P,t,mod,T;
+ mpz_t N,m[interval_size],n[interval_size],min_interval,max_interval,zero,uno,due,tre,quattro,cinque,otto,nove,dodici,trentasei,settantadue,centoquarantaquattro,temp1,temp2,temp3,min_m,max_m,i,min_n,max_n,j,p,a,b,resto,mcd,P,t,mod,T;
 
  mpf_t temp1_f,temp2_f,zero_f,uno_f,tre_f,quattro_f,dodici_f;
    
@@ -123,10 +123,11 @@ int main(){
  mpz_mul(N,N,dodici);
  mpz_add(min_interval,N,cinque);
 
- mpz_mul_ui (temp1,dodici,interval_size);
+ 
+ mpz_mul_ui (temp1,dodici,interval_size-1);
  mpz_add(max_interval,temp1,min_interval);
 
- gmp_printf ("\nmin_interval=%Zd\nmax_interval=%Zd\n",min_interval,max_interval);
+  gmp_printf ("\nmin_interval=%Zd\nmax_interval=%Zd\n",min_interval,max_interval);
 
  mpz_mul(temp1,due,max_interval);
  mpz_sub(temp1,temp1,uno);
@@ -141,7 +142,7 @@ int main(){
  mpf_div(temp2_f,temp2_f,dodici_f);
  mpz_set_f(min_m,temp2_f);
  
- gmp_printf ("\nmin_m=%Zd\nmax_m=%Zd\n",min_m,max_m);
+ //gmp_printf ("\nmin_m=%Zd\nmax_m=%Zd\n",min_m,max_m);
  mpz_set(i,min_m);
 
 
@@ -166,7 +167,7 @@ int main(){
    mpf_div(temp2_f,temp2_f,quattro_f);
    mpz_set_f(min_n,temp2_f);
 
-   //gmp_printf ("\nmin_n=%Zd\nmax_n=%Zd\n",min_n,max_n);   
+   //gmp_printf ("\ni=%Zd\nmin_n=%Zd\nmax_n=%Zd\n",i,min_n,max_n);   
 
    mpz_set(j,min_n);
    
@@ -183,10 +184,11 @@ int main(){
      mpz_add(temp1,temp1,temp2);
      mpz_add(p,temp1,cinque);
      mpz_mod(mod,p,dodici);
+     //gmp_printf ("\n**********tutti*********i=%Zd   j=%Zd\n",i,j);
      if(mpz_cmp(p,min_interval)<0){
        break;
      }else if(mpz_cmp(mod,cinque)==0){
-       // gmp_printf ("\ni=%Zd   j=%Zd\n",i,j);
+       //gmp_printf ("\ni=%Zd   j=%Zd\n",i,j);
 
      mpz_sub(temp1,p,min_interval);
      mpz_div(temp1,temp1,dodici);
@@ -220,6 +222,7 @@ int main(){
      mpz_add(temp1,temp1,temp2);
      mpz_add(p,temp1,cinque);
      mpz_mod(mod,p,dodici);
+     //gmp_printf ("\n**********tutti*********i=%Zd   j=%Zd\n",i,j);
       if(mpz_cmp(p,min_interval)<0){
        break;
       }else if(mpz_cmp(mod,cinque)==0){
@@ -246,7 +249,7 @@ int main(){
  }
  
  k=0;
- while(k<=interval_size-1){
+ while(k<interval_size){
  if(occurrences[k]==1){
    mpz_mul(temp1,quattro,m[k]);
    mpz_add(temp1,temp1,uno);
@@ -291,7 +294,7 @@ mpz_add(t,t,uno);
 
  gmp_printf("\ncycles of the algorithm if written well=%Zd\n",t);
 
- printf("\nDiscussion [ITA]\nhttps://www.matematicamente.it/forum/viewtopic.php?f=26&t=238421\n");
+ printf("\nDiscussion [ITA]\nwww.matematicamente.it/forum/viewforum.php?f=26\n");
  printf("\nDiscussion [ENG]\nhttps://www.mersenneforum.org/showthread.php?t=29807\n");
  
 }
@@ -308,7 +311,7 @@ int prendi_numero(char in[]){
     FILE *fp;
     int i=0;
 
-    fp = fopen("input.txt", "r");
+    fp = fopen("input3.txt", "r");
     if (fp==NULL){
         printf("\nImpossibile aprire file\n");
         system("PAUSE");
