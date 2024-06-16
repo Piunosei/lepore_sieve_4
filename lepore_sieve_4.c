@@ -55,7 +55,7 @@ int prendi_numero(char in[]);
 
 int main(){
 
- mpf_set_default_prec(1000);/*set this value*/
+ mpf_set_default_prec(100);/*set this value*/
 
  mpz_t N,m[interval_size],n[interval_size],min_interval,max_interval,zero,uno,due,tre,quattro,cinque,otto,nove,dodici,trentasei,settantadue,centoquarantaquattro,temp1,temp2,temp3,min_m,max_m,i,min_n,max_n,j,p,a,b,resto,mcd,P,t,mod,T;
 
