@@ -42,6 +42,16 @@ I think the best possible implementation is:
 
 I implemented it in C with the gmp-6.3.0 library like this:
 
+instead of the matrix M I created three arrays
+
+I called
+
+M[][0] -> occurrences[]
+
+M[][1] -> m[]
+
+M[][2] -> n[]
+
 takes a number from input.txt
 
 which is the minimum of the range defined by
