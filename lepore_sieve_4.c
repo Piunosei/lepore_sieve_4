@@ -294,8 +294,8 @@ mpz_add(t,t,uno);
 
  gmp_printf("\ncycles of the algorithm if written well=%Zd\n",t);
 
- printf("\nDiscussion [ITA]\nwww.matematicamente.it/forum/viewforum.php?f=26\n");
- printf("\nDiscussion [ENG]\nhttps://www.mersenneforum.org/showthread.php?t=29807\n");
+ printf("\nDiscussion [ITA]\nwww.matematicamente.it/forum/viewtopic.php?f=26&t=238421\n");
+ printf("\nDiscussion [ENG]\nhttps://www.mersenneforum.org/showthread.php?t=29807\n\n");
  
 }
 
