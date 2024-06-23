@@ -293,7 +293,7 @@ mpz_add(t,t,uno);
  gmp_printf("\ncycles of this algorithm=%Zd\n",temp1);
 
  gmp_printf("\ncycles of the algorithm if written well=%Zd\n",t);
-
+ printf("\npaper theory [ENG]\nhttps://www.academia.edu/121400171/Sieve_of_Lepore_4_in_any_interval\n");
  printf("\nDiscussion [ITA]\nwww.matematicamente.it/forum/viewtopic.php?f=26&t=238421\n");
  printf("\nDiscussion [ENG]\nhttps://www.mersenneforum.org/showthread.php?t=29807\n\n");
  
